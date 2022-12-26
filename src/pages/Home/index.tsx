@@ -7,7 +7,7 @@ export const Home = () => {
   const navigate = useNavigate();
   const handleCreateRoom = () => {
     const randomIdRoom = uuid();
-    navigate(`/room/:?id=${randomIdRoom }`);
+    navigate(`/room/:?id="${randomIdRoom }"`);
   };
   return (
     <ContainerHome>
