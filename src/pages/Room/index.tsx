@@ -8,8 +8,6 @@ import { ModalListVideosSearch } from "../../components/ModalListVideoSearch";
 import Chat from "../../components/chat";
 
 export const Room = () => {
-  const {access_key}= useParams()
-
   const [searchVideo, setSearchVideo] = useState("");
   const [listVideos, setListVideos] = useState([]);
   const [linkVideo, setLinkVideo] = useState(
@@ -104,7 +102,7 @@ export const Room = () => {
             </div>
           )}
         </section>
-        <section className="wrap-chat-content">{<Chat  idRoom={access_key || ""} />}</section>
+        <section className="wrap-chat-content">{<Chat />}</section>
       </main>
 
       <Footer className="Footer" />
