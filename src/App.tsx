@@ -7,7 +7,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route  path="/" element={<Home />}></Route>
-        <Route  path="/room?/:access_key" element={<Room />} />
+        <Route  path="/room/" element={<Room />} />
       </Routes>
     </BrowserRouter>
   );
