@@ -1,7 +1,13 @@
 import Talk from "talkjs";
+import uuid from "react-uuid";
+import { geradorNome} from 'gerador-nome'
 import { useEffect, useState, useRef } from "react";
-
-export default function Chat() {
+interface PropsChat{
+  idRoom: string;
+}
+export default function Chat(props:PropsChat){
+  const randomIdUser = uuid();
+  const { idRoom } = props;
   const chatboxEl:any = useRef();
 
   // wait for TalkJS to load
@@ -12,8 +18,8 @@ export default function Chat() {
 
     if (talkLoaded) {
       const currentUser = new Talk.User({
-        id: "1",
-        name: "Henry Mill",
+        id: randomIdUser,
+        name: geradorNome(),
         email: "henrymill@example.com",
         photoUrl: "henry.jpeg",
         welcomeMessage: "Hello!",
@@ -21,8 +27,8 @@ export default function Chat() {
       });
 
       const otherUser = new Talk.User({
-        id: "2",
-        name: "Gisele",
+        id: randomIdUser,
+        name: geradorNome(),
         email: "Gisele@example.com",
         photoUrl: "jessica.jpeg",
         welcomeMessage: "Hello!",
@@ -34,8 +40,8 @@ export default function Chat() {
         me: currentUser,
       });
 
-      const conversationId = Talk.oneOnOneId(currentUser, otherUser);
-      const conversation = session.getOrCreateConversation(conversationId);
+      //const conversationId = Talk.oneOnOneId(currentUser, otherUser);
+      const conversation = session.getOrCreateConversation(idRoom);
       conversation.setParticipant(currentUser);
       conversation.setParticipant(otherUser);
 
