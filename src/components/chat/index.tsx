@@ -3,11 +3,11 @@ import uuid from "react-uuid";
 import { geradorNome} from 'gerador-nome'
 import { useEffect, useState, useRef } from "react";
 interface PropsChat{
-  idRoom?: string;
+  idRoom: string;
 }
 export default function Chat(props:PropsChat){
   const randomIdUser = uuid();
-
+  const { idRoom } = props;
   const chatboxEl:any = useRef();
 
   // wait for TalkJS to load
@@ -41,7 +41,7 @@ export default function Chat(props:PropsChat){
       });
 
       //const conversationId = Talk.oneOnOneId(currentUser, otherUser);
-      const conversation = session.getOrCreateConversation('122');
+      const conversation = session.getOrCreateConversation(idRoom);
       conversation.setParticipant(currentUser);
       conversation.setParticipant(otherUser);
 

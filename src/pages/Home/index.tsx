@@ -6,8 +6,8 @@ import uuid from "react-uuid";
 export const Home = () => {
   const navigate = useNavigate();
   const handleCreateRoom = () => {
-    //const randomIdRoom = uuid();
-    navigate(`/room/`);
+    const randomIdRoom = uuid();
+    navigate(`/room/?access_key=${randomIdRoom }`);
   };
   return (
     <ContainerHome>

@@ -1,12 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
-import { GlobalStyle } from "./global";
 
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { GlobalStyle } from "./global";
+import { Home } from "./pages/Home";
+import { Room } from "./pages/Room";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/room?/:access_key",
+    element: <Room />,
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <App />
-    <GlobalStyle/>
+    <RouterProvider router={router} />
+    <GlobalStyle />
   </React.StrictMode>
 );
